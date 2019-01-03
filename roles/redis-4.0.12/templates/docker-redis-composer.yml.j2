@@ -1,0 +1,33 @@
+version: '3'
+services:
+
+    redis:
+      image: redis:4.0.12
+      networks: ["icsoc-network"]
+      hostname: redis-{{ NodeId }}
+      container_name: redis
+      ports:
+        - "6379:6379"
+      restart: always
+      volumes:
+      - /data/db/redis/data:{{ RedisDataAbsPath }}
+      - /data/db/redis/config/redis-{{ RedisRole }}.conf:/usr/local/etc/redis/redis.conf
+      command: redis-server /usr/local/etc/redis/redis.conf
+
+    redis-sentinel:
+      image: redis:4.0.12
+      networks: ["icsoc-network"]
+      hostname: redis-sentinel-{{ NodeId }}
+      container_name: redis-sentinel
+      ports:
+        - "26379:26379"
+      restart: always
+      volumes:
+      - /data/db/redis-sentinel/data:{{ RedisDataAbsPath }}
+      - /data/db/redis-sentinel/config/sentinel.conf:/usr/local/etc/redis/redis.conf
+      command: redis-server /usr/local/etc/redis/redis.conf --sentinel
+
+networks:
+  icsoc-network:
+    external:
+      name: icsoc-network

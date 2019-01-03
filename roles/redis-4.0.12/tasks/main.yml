@@ -1,0 +1,18 @@
+- name: 创建docker挂载的目录
+  shell: mkdir -p {{ item }}
+  with_items:
+  - /data/db/redis/config
+  - /data/db/redis-sentinel/config
+  - /data/icsoc
+
+- name: 拷贝redis的docker-compose文件
+  template: src=docker-redis-composer.yml.j2 dest=/data/icsoc/docker-redis-composer.yml
+
+- name: 拷贝redis的配置文件
+  template: src=redis-{{ RedisRole }}.conf.j2 dest=/data/db/redis/config/redis-{{ RedisRole }}.conf
+
+- name: 拷贝redis-sentinel的配置文件
+  template: src=sentinel.conf.j2 dest=/data/db/redis-sentinel/config/sentinel.conf
+
+- name: 启动redis：
+  shell: docker-compose -f /data/icsoc/docker-redis-composer.yml up -d

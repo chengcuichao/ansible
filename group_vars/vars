@@ -1,0 +1,18 @@
+
+#------>redis配置文件参数<---------
+RedisLogFileAbsPath: /var/log/redis/redis.log
+RedisDataAbsPath: /data
+RedisMaxMemory: 2147483648
+RedisMaxMemoryPolicy: volatile-lru
+RedisApendOnly: yes
+RedisAppendFsync: everysec
+RedisRequirePass: P@ssw0rd
+
+RedisMasterIpPort: 192.168.128.221 6379
+RedisMasterAuth: P@ssw0rd
+
+RedisSentinelMonitor: icsoc-master 192.168.128.221 6379 2
+RedisSentinelParallelSyncs: icsoc-master 1
+RedisSentinelAuthPass: icsoc-master P@ssw0rd
+RedisSentinelDownAfterMilliseconds: icsoc-master 30000
+RedisSentinelFailoverTimeout: icsoc-master 180000

@@ -1,0 +1,5 @@
+- name: 拷贝rabbitmq的docker-compose文件
+  template: src=docker-rabbitmq-composer.yml.j2 dest=/home/icsoc/docker-rabbitmq-composer.yml
+
+-nmae:
+  shell:
