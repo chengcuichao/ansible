@@ -1,4 +1,3 @@
-
 #------>redis配置文件参数<---------
 RedisLogFileAbsPath: ""
 RedisDataAbsPath: /data
@@ -16,3 +15,6 @@ RedisSentinelParallelSyncs: icsoc-master 1
 RedisSentinelAuthPass: icsoc-master P@ssw0rd
 RedisSentinelDownAfterMilliseconds: icsoc-master 30000
 RedisSentinelFailoverTimeout: icsoc-master 180000
+
+#------>rabbitmq配置文件参数<---------
+RabbitMqHostname1： 

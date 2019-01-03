@@ -285,7 +285,7 @@ slaveof {{ RedisMasterIpPort }}
 # starting the replication synchronization process, otherwise the master will
 # refuse the slave request.
 #
-# masterauth {{ RedisMasterAuth }}
+masterauth {{ RedisMasterAuth }}
 
 # When a slave loses its connection with the master, or when the replication
 # is still in progress, the slave can act in two different ways:
@@ -811,7 +811,7 @@ lua-time-limit 5000
 # started as cluster nodes can. In order to start a Redis instance as a
 # cluster node enable the cluster support uncommenting the following:
 #
-# cluster-enabled yes
+#cluster-enabled yes
 
 # Every cluster node has a cluster configuration file. This file is not
 # intended to be edited by hand. It is created and updated by Redis nodes.

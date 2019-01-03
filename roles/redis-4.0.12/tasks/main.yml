@@ -9,7 +9,7 @@
   template: src=docker-redis-composer.yml.j2 dest=/data/icsoc/docker-redis-composer.yml
 
 - name: 拷贝redis的配置文件
-  template: src=redis-{{ RedisRole }}.conf.j2 dest=/data/db/redis/config/redis-{{ RedisRole }}.conf
+  template: src=redis-{{ RedisRole }}.conf.j2 dest=/data/db/redis/config/redis-{{ RedisRole }}.conf mode=0666
 
 - name: 拷贝redis-sentinel的配置文件
   template: src=sentinel.conf.j2 dest=/data/db/redis-sentinel/config/sentinel.conf mode=0666
