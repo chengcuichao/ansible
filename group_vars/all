@@ -4,7 +4,7 @@ RedisLogFileAbsPath: ""
 RedisDataAbsPath: /data
 RedisMaxMemory: 2147483648
 RedisMaxMemoryPolicy: volatile-lru
-RedisApendOnly: yes
+RedisAppendOnly: "yes"
 RedisAppendFsync: everysec
 RedisRequirePass: P@ssw0rd
 
