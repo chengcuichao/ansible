@@ -21,3 +21,4 @@ RabbitMqHosts1："rabbitmq-221:192.168.128.221"
 RabbitMqHosts2："rabbitmq-221:192.168.128.222"
 RabbitMqHosts3："rabbitmq-221:192.168.128.223"
 MasterRabbitMq: rabbitmq-221
+MasterRabbitMqIp: 192.168.128.221

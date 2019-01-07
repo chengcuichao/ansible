@@ -8,6 +8,10 @@
 - name: 拷贝rabbitmq的docker-compose文件
   template: src=docker-rabbitmq-composer.yml.j2 dest=/data/icsoc/docker-rabbitmq-composer.yml
 
--nmae:
+- name: 启动rabbitmq：
+  shell: docker-compose -f /data/icsoc/docker-rabbitmq-composer.yml up -d
+
+- name:
   shell: docker exec rabbitmq bash -c "rabbitmqctl stop_app;rabbitmqctl join_cluster rabbit@{{ MasterRabbitMq }};rabbitmqctl start_app;"
-  when: {{ RabbitMqRole }} != "master-1"
+  when: ansible_default_ipv4.address != "{{ MasterRabbitMqIp }}"
+
