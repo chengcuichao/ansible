@@ -4,14 +4,27 @@
   - /data/db/rabbitmq/config
   - /data/icsoc
 
-
 - name: 拷贝rabbitmq的docker-compose文件
   template: src=docker-rabbitmq-composer.yml.j2 dest=/data/icsoc/docker-rabbitmq-composer.yml
 
 - name: 启动rabbitmq：
   shell: docker-compose -f /data/icsoc/docker-rabbitmq-composer.yml up -d
 
+- name: 暂停1分钟，等待容器启动完成
+  pause: seconds=60
+
 - name:
   shell: docker exec rabbitmq /bin/bash -c "rabbitmqctl stop_app;rabbitmqctl join_cluster rabbit@{{ MasterRabbitMq }};rabbitmqctl start_app;"
-  when: ansible_default_ipv4.address != "{{ MasterRabbitMqIp }}"
+  when: ansible_default_ipv4.address != MasterRabbitMqIp
+
+- name: 拷贝rabbitmq设置镜像模式脚本
+  copy: src=RabbitMqInitSet.sh dest=/data/db/rabbitmq/config/RabbitMqInitSet.sh mode=0755
+  when: ansible_default_ipv4.address == MasterRabbitMqIp
+
+- name: 执行rabbitmq设置镜像模式脚本
+  shell: docker exec rabbitmq /bin/bash -c "/var/lib/rabbitmq/mnesia/config/RabbitMqInitSet.sh"
+  when: ansible_default_ipv4.address == MasterRabbitMqIp
+
+
+
 
