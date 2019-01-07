@@ -1,2 +1,3 @@
 NodeId: 221
 RedisRole: master
+RabbitMqRole: master-1

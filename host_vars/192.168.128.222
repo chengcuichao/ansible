@@ -1,2 +1,3 @@
 NodeId: 222
 RedisRole: slave
+RabbitMqRole: master-2

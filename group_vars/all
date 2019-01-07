@@ -17,4 +17,7 @@ RedisSentinelDownAfterMilliseconds: icsoc-master 30000
 RedisSentinelFailoverTimeout: icsoc-master 180000
 
 #------>rabbitmq配置文件参数<---------
-RabbitMqHostname1： 
+RabbitMqHosts1："rabbitmq-221:192.168.128.221"
+RabbitMqHosts2："rabbitmq-221:192.168.128.222"
+RabbitMqHosts3："rabbitmq-221:192.168.128.223"
+MasterRabbitMq: rabbitmq-221

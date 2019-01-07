@@ -6,7 +6,8 @@
 
 
 - name: 拷贝rabbitmq的docker-compose文件
-  template: src=docker-rabbitmq-composer.yml.j2 dest=/home/icsoc/docker-rabbitmq-composer.yml
+  template: src=docker-rabbitmq-composer.yml.j2 dest=/data/icsoc/docker-rabbitmq-composer.yml
 
 -nmae:
-  shell:
+  shell: docker exec rabbitmq bash -c "rabbitmqctl stop_app;rabbitmqctl join_cluster rabbit@{{ MasterRabbitMq }};rabbitmqctl start_app;"
+  when: {{ RabbitMqRole }} != "master-1"

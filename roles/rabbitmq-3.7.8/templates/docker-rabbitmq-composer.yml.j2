@@ -6,7 +6,9 @@ services:
     hostname: rabbitmq-{{ NodeId }}
     container_name: rabbitmq
     extra_hosts:
-      - "rabbitmq-{{  }}"
+      - "{{ RabbitMqHosts1 }}"
+      - "{{ RabbitMqHosts2 }}"
+      - "{{ RabbitMqHosts3 }}"
     ports:
       - "4369:4369"
       - "5671:5671"
@@ -18,9 +20,9 @@ services:
     environment:
     - RABBITMQ_DEFAULT_USER=icsoc
     - RABBITMQ_DEFAULT_PASS=P@ssw0rd
+    - RABBITMQ_ERLANG_COOKIE="UERVU0hWVU9KT1ZQVUVYT0JXWU8="
     volumes:
     - /data/db/rabbitmq:/var/lib/rabbitmq/mnesia
-
 
 networks:
   icsoc-network:
