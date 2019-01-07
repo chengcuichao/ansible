@@ -1,28 +1,28 @@
 version: '3'
 services:
     rabbitmq:
-    image: rabbitmq:3.7.8-management
-    networks: ["icsoc-network"]
-    hostname: rabbitmq-{{ NodeId }}
-    container_name: rabbitmq
-    extra_hosts:
-      - "{{ RabbitMqHosts1 }}"
-      - "{{ RabbitMqHosts2 }}"
-      - "{{ RabbitMqHosts3 }}"
-    ports:
-      - "4369:4369"
-      - "5671:5671"
-      - "5672:5672"
-      - "15671:15671"
-      - "15672:15672"
-      - "25672:25672"
-    restart: always
-    environment:
-    - RABBITMQ_DEFAULT_USER=icsoc
-    - RABBITMQ_DEFAULT_PASS=P@ssw0rd
-    - RABBITMQ_ERLANG_COOKIE="UERVU0hWVU9KT1ZQVUVYT0JXWU8="
-    volumes:
-    - /data/db/rabbitmq:/var/lib/rabbitmq/mnesia
+      image: rabbitmq:3.7.8-management
+      networks: ["icsoc-network"]
+      hostname: rabbitmq-{{ NodeId }}
+      container_name: rabbitmq
+      extra_hosts:
+        - "{{ RabbitMqHosts1 }}"
+        - "{{ RabbitMqHosts2 }}"
+        - "{{ RabbitMqHosts3 }}"
+      ports:
+        - "4369:4369"
+        - "5671:5671"
+        - "5672:5672"
+        - "15671:15671"
+        - "15672:15672"
+        - "25672:25672"
+      restart: always
+      environment:
+      - RABBITMQ_DEFAULT_USER=icsoc
+      - RABBITMQ_DEFAULT_PASS=P@ssw0rd
+      - RABBITMQ_ERLANG_COOKIE="UERVU0hWVU9KT1ZQVUVYT0JXWU8="
+      volumes:
+      - /data/db/rabbitmq:/var/lib/rabbitmq/mnesia
 
 networks:
   icsoc-network:

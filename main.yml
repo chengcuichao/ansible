@@ -1,3 +1,6 @@
 - hosts: redis
   roles:
   - redis-4.0.12
+- hosts: rabbitmq
+  roles:
+  - rabbitmq-3.7.8
